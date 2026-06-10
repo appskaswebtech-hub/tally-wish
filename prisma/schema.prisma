@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Note that some adapters may set a maximum length for the String type by default, please ensure your strings are long
+// enough when changing adapters.
+// See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+  refreshToken        String?
+  refreshTokenExpires DateTime?
+}
+
+model TallyWishSetting {
+  id               Int     @id @default(autoincrement())
+  shop             String  @unique
+
+  // Connection
+  store_id         String  @default("")
+  store_secure_key String  @default("")
+
+  // Display
+  button_type      String  @default("both")   // "both" | "floating" | "product"
+
+  // Floating icon
+  bottom_offset    Int     @default(20)
+  right_offset     Int     @default(20)
+  bg_color         String  @default("#ff4081")
+
+  // Product button
+  button_text      String  @default("❤ Add to TallyWish")
+  btn_bg           String  @default("#ff4081")
+  btn_color        String  @default("#ffffff")
+  btn_radius       Int     @default(5)
+
+  // Global toggle
+  enabled          Int     @default(0)        // 0 = off, 1 = on
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
