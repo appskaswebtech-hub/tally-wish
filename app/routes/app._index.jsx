@@ -72,7 +72,7 @@ export default function Settings() {
 
         {/* HEADER */}
         <header className="tw-header">
-          <div className="tw-logo-mark">TW</div>
+          <div className="tw-logo-mark"> <img src="/logo.png" alt="TallyWish" className="tw-logo-img" /></div>
           <div>
             <h1 className="tw-brand">TallyWish</h1>
             <p className="tw-tagline">Connect your store with TallyWish</p>
@@ -306,7 +306,7 @@ const CSS = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   .tw-wrap {
-    max-width: 680px;
+    max-width: 65%;
     margin: 0 auto;
     padding: 32px 24px 80px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -323,16 +323,22 @@ const CSS = `
     gap: 14px;
     margin-bottom: 28px;
   }
-  .tw-logo-mark {
-    width: 46px; height: 46px;
-    background: linear-gradient(135deg, #ff4081, #f50057);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-weight: 800; font-size: 15px;
-    letter-spacing: 0.5px;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(255,64,129,.35);
-  }
+
+
+.tw-logo-mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.tw-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
   .tw-brand {
     font-size: 20px; font-weight: 700;
     color: #1a1a2e; line-height: 1;
