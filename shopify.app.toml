@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "2c2d613cf1467acd33c7ae91545018fd"
-application_url = "https://example.com"
+application_url = "https://tally-wish.onrender.com"
 embedded = true
 name = "TallyWish"
 
@@ -34,7 +34,7 @@ name = "Description"
 type = "multi_line_text_field"
 
 [app_proxy]
-url    = "https://potato-suitable-pair-apps.trycloudflare.com/api/tallywish-settings"
+url    = "https://tally-wish.onrender.com/api/tallywish-settings"
 subpath = "tallywish-settings"
 prefix  = "apps"
 
@@ -50,7 +50,7 @@ api_version = "2026-07"
   topics = [ "app/scopes_update" ]
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://tally-wish.onrender.com/api/auth" ]
 
 [build]
 automatically_update_urls_on_dev = true

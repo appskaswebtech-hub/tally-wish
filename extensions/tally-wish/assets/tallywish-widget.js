@@ -18,6 +18,7 @@
       document.querySelector('meta[name="shopify-checkout-api-token"]')
         ?.closest("[data-shopify-shop]")
         ?.dataset?.shopifyShop ||
+      window.location.hostname ||
       null
     );
   }
@@ -32,7 +33,14 @@
   // No CORS issues — request comes from same storefront origin /apps/tallywish-settings
 
   function loadSettings(cb) {
-    fetch("https://councils-proprietary-san-targeted.trycloudflare.com/api/tallywish-settings?shop=test-tally.myshopify.com")
+    const shop = getShop();
+
+    if (!shop) {
+      console.warn("[TallyWish] Could not detect shop domain.");
+      return;
+    }
+
+    fetch("/apps/tallywish-settings?shop=" + encodeURIComponent(shop))
       .then((res) => res.json())
       .then((data) => {
         settings = data;
